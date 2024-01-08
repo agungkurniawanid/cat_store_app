@@ -10,6 +10,17 @@ class ListCat extends StatefulWidget {
 }
 
 class _ListCatState extends State<ListCat> {
+  String formatRupiah(int value) {
+    // Format value menjadi string dengan pemisah ribuan
+    String formattedValue = value.toString().replaceAllMapped(
+          RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+          (Match match) => '${match[1]},',
+        );
+
+    // Tambahkan 'Rp. ' di depan nilai
+    return 'Rp. $formattedValue';
+  }
+
   List<Kucing> dataKucing = Kucing.getDataKucing();
   @override
   Widget build(BuildContext context) {
@@ -222,9 +233,9 @@ class _ListCatState extends State<ListCat> {
                                       const SizedBox(
                                         height: 5,
                                       ),
-                                      const Text(
-                                        "Chiko Bloon",
-                                        style: TextStyle(
+                                      Text(
+                                        dataKucing[index].nama,
+                                        style: const TextStyle(
                                             fontSize: 18,
                                             color: Colors.black,
                                             fontWeight: FontWeight.w500),
@@ -244,9 +255,9 @@ class _ListCatState extends State<ListCat> {
                                       const SizedBox(
                                         height: 5,
                                       ),
-                                      const Text(
-                                        "Rp. 3.000.000",
-                                        style: TextStyle(
+                                      Text(
+                                        formatRupiah(dataKucing[index].harga),
+                                        style: const TextStyle(
                                             fontSize: 18,
                                             color: Colors.black,
                                             fontWeight: FontWeight.w500),
