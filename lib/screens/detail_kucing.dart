@@ -1,12 +1,12 @@
+import 'package:cat_store_app/models/data_kucing.dart';
 import 'package:flutter/material.dart';
-import 'package:listview/models/datakoceng.dart';
 
 class DetailKucing extends StatefulWidget {
   final Kucing kucing;
   final int index;
 
   const DetailKucing({Key? key, required this.kucing, required this.index})
-      : super(key: key);
+    : super(key: key);
 
   @override
   State<DetailKucing> createState() => _DetailKucingState();
@@ -31,9 +31,9 @@ class _DetailKucingState extends State<DetailKucing> {
   String formatRupiah(int value) {
     // Format value menjadi string dengan pemisah ribuan
     String formattedValue = value.toString().replaceAllMapped(
-          RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-          (Match match) => '${match[1]},',
-        );
+      RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+      (Match match) => '${match[1]},',
+    );
 
     // Tambahkan 'Rp. ' di depan nilai
     return 'Rp. $formattedValue';
@@ -42,9 +42,7 @@ class _DetailKucingState extends State<DetailKucing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF111111),
-      ),
+      appBar: AppBar(backgroundColor: Color(0xFF111111)),
       body: Container(
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
@@ -67,9 +65,7 @@ class _DetailKucingState extends State<DetailKucing> {
                   fit: BoxFit.contain,
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.all(25.0),
                 child: Column(
@@ -80,80 +76,79 @@ class _DetailKucingState extends State<DetailKucing> {
                         Text(
                           kucing.nama,
                           style: const TextStyle(
-                              fontSize: 34,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
+                            fontSize: 34,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           formatRupiah(kucing.harga),
                           style: const TextStyle(
-                              fontSize: 24,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
+                            fontSize: 24,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(0),
                           child: Row(
                             children: [
                               Icon(Icons.star, color: Colors.yellow.shade500),
-                              const SizedBox(
-                                width: 10,
-                              ),
+                              const SizedBox(width: 10),
                               Text(
                                 kucing.beratBadan.toString(),
                                 style: const TextStyle(
-                                    fontSize: 24,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
+                                  fontSize: 24,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ],
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 30,
-                    ),
+                    const SizedBox(height: 30),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text("Deksripsi",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500)),
-                        const SizedBox(
-                          height: 10,
+                        const Text(
+                          "Deksripsi",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
+                        const SizedBox(height: 10),
                         Container(
                           child: Text(
                             kucing.catatanKhusus,
                             style: TextStyle(color: Colors.white, fontSize: 16),
                           ),
                         ),
-                        const SizedBox(
-                          height: 40,
-                        ),
+                        const SizedBox(height: 40),
                         ElevatedButton(
-                            onPressed: () {},
-                            style: ButtonStyle(
-                                backgroundColor: const MaterialStatePropertyAll(
-                                    Colors.amber),
-                                minimumSize: MaterialStateProperty.all(Size(
-                                    MediaQuery.of(context).size.width, 60))),
-                            child: const Text(
-                              "Hubungi Pemilik",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
-                            )),
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            backgroundColor: const MaterialStatePropertyAll(
+                              Colors.amber,
+                            ),
+                            minimumSize: MaterialStateProperty.all(
+                              Size(MediaQuery.of(context).size.width, 60),
+                            ),
+                          ),
+                          child: const Text(
+                            "Hubungi Pemilik",
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ),
                       ],
                     ),
                   ],
